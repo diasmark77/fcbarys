@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Объявления — ФК Барыс</title>
+  <link rel="stylesheet" href="style.css"> <!-- index.html стиль файлына сілтеме -->
+  <style>
+    /* Объявления бетіне арналған қосымша стильдер */
+    .announcements-header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+    .announcements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+    .announcement-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .announcement-card:hover {
+      transform: translateY(-4px);
+      border-color: #ffd700; /* Клубтың сары стиліне сәйкес */
+    }
+    .card-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .badge-schedule { background: #007bff; color: #fff; }
+    .badge-info { background: #28a745; color: #fff; }
+    .badge-urgent { background: #dc3545; color: #fff; }
+    
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .card-date {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-bottom: 15px;
+    }
+    .card-body {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Шапка / Navigation -->
+  <header>
+    <nav class="nav-container">
+      <div class="logo">
+        <a href="index.html">ФК БАРЫС</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="announcements.html" class="active">Объявления</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Бас тақырып -->
+    <section class="announcements-header">
+      <div class="eyebrow">Важная информация</div>
+      <h1>Объявления и Расписание</h1>
+      <p class="lede">Все актуальные новости, изменения в расписании и важные события клуба Barys.</p>
+    </section>
+
+    <!-- Хабарландырулар блогы -->
+    <section class="announcements-grid">
+
+      <!-- Карточка 1: Жаттығу кестесі -->
+      <article class="announcement-card">
+        <div>
+          <span class="card-badge badge-schedule">Расписание</span>
+          <h2 class="card-title">Расписание тренировок на эту неделю</h2>
+          <div class="card-date">Опубликовано: 1 сентября 2026</div>
+          <div class="card-body">
+            <p><strong>Понедельник, Среда, Пятница:</strong></p>
+            <ul>
+              <li>2012–2015 гг.р. — 16:00 - 17:30</li>
+              <li>2016–2020 гг.р. — 17:30 - 19:00</li>
+            </ul>
+            <p>Просим приходить за 15 минут до начала тренировки.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Карточка 2: Жалпы хабарландыру -->
+      <article class="announcement-card">
+        <div>
+          <span class="card-badge badge-info">Информация</span>
+          <h2 class="card-title">Набор новых групп продолжается</h2>
+          <div class="card-date">Опубликовано: 28 августа 2026</div>
+          <div class="card-body">
+            <p>Ведется активный набор детей 2012–2020 годов рождения. Для записи на первую пробную тренировку обратитесь к руководителю клуба.</p>
+          </div>
+        </div>
+        <a href="https://wa.me/77052902840" class="btn-ghost" style="text-align: center;">Записаться через WhatsApp</a>
+      </article>
+
+      <!-- Карточка 3: Маңызды хабарландыру (Үлгі) -->
+      <article class="announcement-card">
+        <div>
+          <span class="card-badge badge-urgent">Важно</span>
+          <h2 class="card-title">Товарищеский матч в воскресенье</h2>
+          <div class="card-date">Опубликовано: 25 августа 2026</div>
+          <div class="card-body">
+            <p>В это воскресенье состоится товарищеская игра между младшими группами. Подробная информация будет отправлена в родительский чат.</p>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+</body>
+</html>
