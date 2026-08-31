@@ -168,6 +168,128 @@
         <p>2012–2020 жылы туылған балаларды академиямызға жазылуға шақырамыз. Алғашқы сынақ жаттығуына қатысу үшін WhatsApp арқылы хабарлассаңыз болады.</p>
       </article>
 
+       <article class="schedule-card">
+  <h2>🗓️ Жаттығу кестелері</h2>
+  <p>Топтар бойынша жаттығу уақыттары төменде көрсетілген. Суретті үлкейтіп қарау үшін үстінен басыңыз.</p>
+  
+  <div class="schedules-grid">
+    <!-- 1-сурет -->
+    <div class="image-wrapper" onclick="openModal(this)">
+      <img src="st-group.jpg" alt="Үлкен топ кестесі">
+      <div class="image-hint">🔍 Үлкейту</div>
+    </div>
+
+    <!-- 2-сурет -->
+    <div class="image-wrapper" onclick="openModal(this)">
+      <img src="2-group9.jpg" alt="Ортаңғы топ кестесі">
+      <div class="image-hint">🔍 Үлкейту</div>
+    </div>
+
+    <!-- 3-сурет -->
+    <div class="image-wrapper" onclick="openModal(this)">
+      <img src="2-group16.jpg" alt="Кіші топ кестесі">
+      <div class="image-hint">🔍 Үлкейту</div>
+    </div>
+  </div>
+</article>
+
+<!-- Толық экранда ашатын модальді терезе -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+  <span class="modal-close">&times;</span>
+  <img id="modalImg" src="">
+</div>
+
+<style>
+  /* Суреттерді қатар орналастыруға арналған сетка */
+  .schedules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 15px;
+  }
+
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    background: #000;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .image-wrapper:hover {
+    transform: translateY(-4px);
+    border-color: #ffd700;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Суреттер ұқыпты бірдей өлшемде тұрады */
+    display: block;
+  }
+
+  .image-hint {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Модаль стильдері */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .modal img {
+    max-width: 95%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  function openModal(wrapper) {
+    var img = wrapper.querySelector("img");
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImg");
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+  }
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+</script>
+      
     </section>
   </main>
 
