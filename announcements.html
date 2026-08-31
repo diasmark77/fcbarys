@@ -1,107 +1,195 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Объявления — ФК Барыс</title>
-  <link rel="stylesheet" href="style.css"> <!-- index.html стиль файлына сілтеме -->
+  <title>Хабарландырулар мен Кесте — BARYS</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* Объявления бетіне арналған қосымша стильдер */
-    .announcements-header {
+    /* Бетке арналған арнайы стильдер */
+    .page-header {
       text-align: center;
-      padding: 60px 20px 30px;
+      padding: 50px 20px 20px;
     }
-    .announcements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
+
+    .announcements-container {
+      max-width: 1000px;
       margin: 0 auto 60px;
       padding: 0 20px;
-    }
-    .announcement-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 24px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s, border-color 0.2s;
+      gap: 30px;
     }
-    .announcement-card:hover {
-      transform: translateY(-4px);
-      border-color: #ffd700; /* Клубтың сары стиліне сәйкес */
+
+    /* Кесте суретіне арналған басты блок */
+    .schedule-card {
+      background: var(--card-bg, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
-    .card-badge {
-      display: inline-block;
-      padding: 4px 12px;
+
+    .schedule-card h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .schedule-card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    /* Суретті ұқыпты әрі әдемі көрсететін контейнер */
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      background: #000;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .image-wrapper:hover {
+      transform: scale(1.01);
+      border-color: #ffd700;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .image-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.8rem;
-      font-weight: bold;
-      margin-bottom: 12px;
-      width: fit-content;
+      backdrop-filter: blur(4px);
     }
-    .badge-schedule { background: #007bff; color: #fff; }
-    .badge-info { background: #28a745; color: #fff; }
-    .badge-urgent { background: #dc3545; color: #fff; }
-    
-    .card-title {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
+
+    /* Басқа хабарландыру карталары */
+    .info-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid #ffd700;
+      border-radius: 8px;
+      padding: 20px;
     }
-    .card-date {
+
+    .info-card .date {
       font-size: 0.85rem;
       opacity: 0.6;
-      margin-bottom: 15px;
+      margin-bottom: 8px;
     }
-    .card-body {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 20px;
+
+    /* Суретті толық экранда ашып көру модалі */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal img {
+      max-width: 95%;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,215,0,0.2);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- Шапка / Navigation -->
+  <!-- Навигация -->
   <header>
     <nav class="nav-container">
       <div class="logo">
         <a href="index.html">ФК БАРЫС</a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="announcements.html" class="active">Объявления</a></li>
+        <li><a href="index.html">Басты бет</a></li>
+        <li><a href="announcements.html" class="active">Хабарландырулар</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <!-- Бас тақырып -->
-    <section class="announcements-header">
-      <div class="eyebrow">Важная информация</div>
-      <h1>Объявления и Расписание</h1>
-      <p class="lede">Все актуальные новости, изменения в расписании и важные события клуба Barys.</p>
+    <section class="page-header">
+      <div class="eyebrow">Маңызды ақпарат</div>
+      <h1>Хабарландырулар мен Кесте</h1>
+      <p class="lede">Клубтың соңғы жаңалықтары, жаттығу кестесі және маңызды хабарландырулары.</p>
     </section>
 
-    <!-- Хабарландырулар блогы -->
-    <section class="announcements-grid">
+    <section class="announcements-container">
 
-      <!-- Карточка 1: Жаттығу кестесі -->
-      <article class="announcement-card">
-        <div>
-          <span class="card-badge badge-schedule">Расписание</span>
-          <h2 class="card-title">Расписание тренировок </h2>
-          <div class="card-date">Опубликовано: 1 сентября 2026</div>
-          <div class="card-body">
-          </div>
+      <!-- Кесте суреті қойылатын басты блок -->
+      <article class="schedule-card">
+        <h2>🗓️ Ағымдағы жаттығу кестесі</h2>
+        <p>Жаттығу уақыттары мен топтар кестесі төмендегі суретте көрсетілген. Суретті үлкейтіп қарау үшін үстінен басыңыз.</p>
+        
+        <div class="image-wrapper" onclick="openModal()">
+          <!-- Мына жерге фотоңыздың атын жазыңыз (мысалы: schedule.jpg) -->
+          <img src="schedule.jpg" alt="Жаттығу кестесі" id="scheduleImg">
+          <div class="image-hint">🔍 Толық экранда көру үшін басыңыз</div>
         </div>
       </article>
 
+      <!-- Қосымша хабарландыру блогы -->
+      <article class="info-card">
+        <div class="date">Жарияланды: Бүгін</div>
+        <h3>📢 Жаңа балаларды қабылдау жалғасуда!</h3>
+        <p>2012–2020 жылы туылған балаларды академиямызға жазылуға шақырамыз. Алғашқы сынақ жаттығуына қатысу үшін WhatsApp арқылы хабарлассаңыз болады.</p>
+      </article>
 
     </section>
   </main>
+
+  <!-- Толық экранда ашатын модальді терезе -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <img id="modalImg" src="">
+  </div>
+
+  <script>
+    function openModal() {
+      var img = document.getElementById("scheduleImg");
+      var modal = document.getElementById("imageModal");
+      var modalImg = document.getElementById("modalImg");
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+    }
+
+    function closeModal() {
+      document.getElementById("imageModal").style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
