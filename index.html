@@ -294,6 +294,39 @@
     .wa-ring{animation:none;}
     html{scroll-behavior:auto;}
   }
+  /* Сыртқы сопақша блок */
+.lang-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f1f3f5; /* Фон түсі */
+  border-radius: 50px;       /* Толық сопақша (pill) пішін береді */
+  padding: 4px;
+  border: 1px solid #e9ecef;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Ішкі KAZ / RUS батырмалары */
+.lang-btn {
+  text-decoration: none;
+  color: #495057;
+  padding: 6px 16px;
+  border-radius: 50px;       /* Бұрыштарын сопақшалау */
+  transition: all 0.3s ease;
+}
+
+/* Меңзерді апарғанда */
+.lang-btn:hover {
+  color: #0070f3;
+}
+
+/* Белсенді (таңдалған) тілдің стилі */
+.lang-btn.active {
+  background-color: #0070f3; /* Белсенді түс (көк) */
+  color: #ffffff;            /* Мәтін түсі ақ */
+  box-shadow: 0 2px 6px rgba(0, 112, 243, 0.3); /* Жеңіл көлеңке */
+}
 </style>
 </head>
 <body>
@@ -307,6 +340,11 @@
   </div>
   <a href="#cta" class="nav-cta">Тіркелу</a>
 </nav>
+
+  <div class="lang-pill">
+  <a href="index.html" class="lang-btn">KAZ</a>
+  <a href="home-rus.html" class="lang-btn active">RUS</a>
+</div>
 
 <section class="hero">
   <div>
