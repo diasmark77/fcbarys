@@ -692,3 +692,36 @@ footer {
     flex-direction: column;
   }
 }
+.announce-float {
+  position: fixed;
+  right: 24px;
+  bottom: 94px;
+  width: 48px;
+  height: 48px;
+  background: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  z-index: 999;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.announce-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
+}
+
+@media (max-width: 480px) {
+  .announce-float {
+    right: 16px;
+    bottom: 86px;
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+}
