@@ -749,3 +749,25 @@ footer {
   border-radius: 18px;
   color: rgba(234, 243, 252, 0.55);
   transition: color 0.25s ease,
+
+.btn-wa-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.btn-wa-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: #04150C;
+}
+
+.btn-wa-icon:hover {
+  transform: scale(1.06);
+}
