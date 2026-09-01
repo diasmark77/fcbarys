@@ -914,3 +914,4 @@ nav {
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
+  padding-top: 110px;  }  .hero-photo {    order: -1;  }  .hero-photo img {    max-height: 52vh;  }  nav {    padding: 14px 5vw;  }}
