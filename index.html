@@ -195,10 +195,8 @@
   const waLink = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
   document.getElementById('waFloat').href = waLink;
   document.getElementById('waBtn').href = waLink;
-</script>
-
 <script>
-  const tabBar = document.getElementById('floatingTabBar');
+  const tabBar = document.getElementById('iosTabBar');
   let isDragging = false;
   let currentX, currentY, initialX, initialY;
   let xOffset = 0, yOffset = 0;
@@ -232,7 +230,7 @@
     if (isDragging) {
       e.preventDefault();
       hasMoved = true;
-      
+
       if (e.type === "touchmove") {
         currentX = e.touches[0].clientX - initialX;
         currentY = e.touches[0].clientY - initialY;
@@ -259,7 +257,7 @@
   }
 
   // Сырғытқан кезде батырма өтіп кетпеуі үшін
-  document.querySelectorAll('.tab-item').forEach(link => {
+  document.querySelectorAll('.tab-btn').forEach(link => {
     link.addEventListener('click', (e) => {
       if (hasMoved) {
         e.preventDefault();
@@ -270,11 +268,11 @@
   // Қай бетте тұрғанын анықтап, батырманы белсенді ету
   const currentPage = window.location.pathname.split("/").pop();
   if (currentPage === "announcements.html") {
-    document.getElementById("tabAnnounce").classList.add("active");
-    document.getElementById("tabHome").classList.remove("active");
+    document.getElementById("btnAnnounce").classList.add("active");
+    document.getElementById("btnHome").classList.remove("active");
   } else {
-    document.getElementById("tabHome").classList.add("active");
-    document.getElementById("tabAnnounce").classList.remove("active");
+    document.getElementById("btnHome").classList.add("active");
+    document.getElementById("btnAnnounce").classList.remove("active");
   }
 </script>
   
